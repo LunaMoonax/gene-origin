@@ -1,7 +1,8 @@
 from BCBio import GFF
+import sys
 
-gff_file = snakemake.input.gff
-counts_file = snakemake.output.counts
+gff_file = sys.argv[1]
+counts_file = sys.argv[2]
 
 gene_count = 0
 with open(gff_file) as f:

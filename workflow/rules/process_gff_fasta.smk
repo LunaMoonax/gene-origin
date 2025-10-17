@@ -1,10 +1,13 @@
-rule:
+rule process_gff_fasta:
     input:
         gff = config["gff_file"],
-        fasta = config["fasta_file"]
+        fasta = config["fasta_file"],
+        script = os.path.join("scripts", "parse_gff.py")
     output:
-        "results/parsed_gff_fasta.txt"
+        parsed = "results/parsed_gff.txt"
+    log:
+        "Logs/process_gff_fasta.log"
+    conda:
+        "../envs/py.yaml"
     shell:
-        """
-        python3 scripts/parsed_gff_fasta.py
-        """
+        "python3 {input.script} {input.gff} {output.parsed}"
