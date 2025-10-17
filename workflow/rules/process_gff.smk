@@ -4,6 +4,6 @@ rule:
     output:
         "results/parsed_gff.txt"
     shell:
-        "
+        """
         python3 scripts/parsed_gff_fasta.py
-        "
+        """
